@@ -6,10 +6,13 @@ import './SideBar.css'
 
 export default class SideBar extends Component {
   render() {
+    debugger;
     return (
       <aside className='sideBar'>
         <GoBack />
-        <FolderList />
+        <FolderList
+          folders={this.props.folders}
+        />
         <AddFolder />
       </aside>
     )
