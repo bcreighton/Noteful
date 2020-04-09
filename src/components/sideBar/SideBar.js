@@ -6,7 +6,6 @@ import './SideBar.css'
 
 export default class SideBar extends Component {
   render() {
-    debugger;
     return (
       <aside className='sideBar'>
         <GoBack />

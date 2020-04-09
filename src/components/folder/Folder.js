@@ -3,9 +3,10 @@ import './Folder.css'
 
 export default class Folder extends Component {
   render() {
+    const { id, name } = this.props
     return (
       <div className='folder'>
-        <h2 className='folderName'>Folder 1</h2>
+        <h2 className='folderName'>{name}</h2>
       </div>
     )
   }

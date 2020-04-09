@@ -5,11 +5,16 @@ import './FolderList.css'
 
 export default class FolderList extends Component {
   render() {
+    const folderList = this.props.folders.map(folder => (
+      <Folder
+        key={folder.id}
+        id={folder.id}
+        name={folder.name}
+      />
+    ))
     return (
       <>
-        <Folder />
-        <Folder />
-        <Folder />
+        {folderList}
         <AddFolder />
       </>
     )
