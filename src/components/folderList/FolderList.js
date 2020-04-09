@@ -15,7 +15,6 @@ export default class FolderList extends Component {
     return (
       <>
         {folderList}
-        <AddFolder />
       </>
     )
   }

@@ -5,9 +5,11 @@ export default class Folder extends Component {
   render() {
     const { id, name } = this.props
     return (
-      <div className='folder'>
-        <h2 className='folderName'>{name}</h2>
-      </div>
+      <a href={`/folder/${id}`}>
+        <div className='folder'>
+          <h2 className='folderName'>{name}</h2>
+        </div>
+      </a>
     )
   }
 }

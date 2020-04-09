@@ -4,7 +4,7 @@ import './Header.css'
 export default class Header extends Component {
   render() {
     return (
-      <h1 className='AppTitle'>Noteful</h1>
+      <h1 className='appTitle'>Noteful</h1>
     )
   }
 }

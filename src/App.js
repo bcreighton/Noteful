@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom'
 import Header from './components/header/Header'
 import Main from './components/main/Main'
 import SideBar from './components/sideBar/SideBar'
@@ -22,11 +23,11 @@ export default class App extends Component {
           <Header />
         </header>
         <main className='mainContainer'>
-          <Main
-            notes={this.state.notes}
-          />
           <SideBar
             folders={this.state.folders}
+          />
+          <Main
+            notes={this.state.notes}
           />
         </main>
       </div>
