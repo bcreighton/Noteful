@@ -3,6 +3,9 @@ import { Route } from 'react-router-dom'
 import Header from './components/header/Header'
 import Main from './components/main/Main'
 import SideBar from './components/sideBar/SideBar'
+import FolderList from './components/folderList/FolderList'
+import SideBarActiveNote from './components/sideBarActiveNote/SideBarActiveNote'
+import Note from './components/note/Note'
 import './App.css';
 import NOTES from './dummyData'
 
@@ -23,12 +26,42 @@ export default class App extends Component {
           <Header />
         </header>
         <main className='mainContainer'>
-          <SideBar
-            folders={this.state.folders}
-          />
-          <Main
-            notes={this.state.notes}
-          />
+          <SideBar folders={this.state.folders}>
+            <Route
+              path='/'
+              component={FolderList}
+            />
+            <Route
+              path='/folder/:folderId'
+              render={() => {
+                return <FolderList />
+              }}
+            />
+            <Route
+              path='/note/:noteId'
+              render={() => {
+                return <SideBarActiveNote />
+              }}
+            />
+          </SideBar>
+          <Main notes={this.state.notes}>
+            <Route
+              path='/'
+              component={Main}
+            />
+            <Route
+              path='/folder/:folderId'
+              render={() => {
+                return <Main />
+              }}
+            />
+            <Route
+              path='/note/:noteId'
+              render={() => {
+                return <Note />
+              }}
+            />
+          </Main>
         </main>
       </div>
     )
