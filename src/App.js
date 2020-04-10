@@ -13,8 +13,6 @@ export default class App extends Component {
   state = {
     notes: NOTES.notes,
     folders: NOTES.folders,
-    inFolder: false,
-    inNote: false,
     folderId: null,
     noteId: null,
   }
@@ -29,7 +27,7 @@ export default class App extends Component {
 
 
   render() {
-    const { notes, folders, inFolder, inNote, folderId, noteId } = this.state
+    const { notes, folders, folderId, noteId } = this.state
 
     return (
       <div className="App">
@@ -44,35 +42,39 @@ export default class App extends Component {
             />
             <Route
               path='/folder/:folderId'
-              render={({{notes, folders}}) => {
-              <FolderList />
-            }}
+              render={() => {
+                return <FolderList />
+              }}
             />
             <Route
               path='/note/:noteId'
               render={() => {
-                <SideBarActiveNote />
+                return <SideBarActiveNote />
               }}
             />
           </SideBar>
-          <Main notes={this.state.notes}>
-            <Route
-              path='/'
-              component={Main}
-            />
-            <Route
-              path='/folder/:folderId'
-              render={() => {
-                <Main />
-              }}
-            />
-            <Route
-              path='/note/:noteId'
-              render={() => {
-                <Note />
-              }}
-            />
-          </Main>
+
+          <Route
+            exact
+            path='/'
+            render={(props) => {
+              debugger
+              return <Main {...this.state} />
+            }}
+          />
+          <Route
+            path='/folder/:folderId'
+            render={(props) => {
+              debugger;
+              return <Main {...this.state} />
+            }}
+          />
+          <Route
+            path='/note/:noteId'
+            render={() => {
+              return <Note />
+            }}
+          />
         </main>
       </div>
     )
