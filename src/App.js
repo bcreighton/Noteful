@@ -19,28 +19,39 @@ export default class App extends Component {
     noteId: null,
   }
 
+  noteSelect(note) {
+    return <></>
+  }
+
+  folderSelect(folder) {
+    return <></>
+  }
+
+
   render() {
+    const { notes, folders, inFolder, inNote, folderId, noteId } = this.state
+
     return (
       <div className="App">
         <header className="header">
           <Header />
         </header>
         <main className='mainContainer'>
-          <SideBar folders={this.state.folders}>
+          <SideBar folders={folders}>
             <Route
               path='/'
               component={FolderList}
             />
             <Route
               path='/folder/:folderId'
-              render={() => {
-                return <FolderList />
-              }}
+              render={({{notes, folders}}) => {
+              <FolderList />
+            }}
             />
             <Route
               path='/note/:noteId'
               render={() => {
-                return <SideBarActiveNote />
+                <SideBarActiveNote />
               }}
             />
           </SideBar>
@@ -52,13 +63,13 @@ export default class App extends Component {
             <Route
               path='/folder/:folderId'
               render={() => {
-                return <Main />
+                <Main />
               }}
             />
             <Route
               path='/note/:noteId'
               render={() => {
-                return <Note />
+                <Note />
               }}
             />
           </Main>
