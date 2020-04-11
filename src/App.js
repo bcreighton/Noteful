@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Header from './components/header/Header'
 import Main from './components/main/Main'
 import SideBar from './components/sideBar/SideBar'
 import FolderList from './components/folderList/FolderList'
 import SideBarActiveNote from './components/sideBarActiveNote/SideBarActiveNote'
 import Note from './components/note/Note'
+import NotFound from './components/NotFound'
 import './App.css';
 import NOTES from './dummyData'
 
@@ -13,21 +14,10 @@ export default class App extends Component {
   state = {
     notes: NOTES.notes,
     folders: NOTES.folders,
-    folderId: null,
-    noteId: null,
   }
-
-  noteSelect(note) {
-    return <></>
-  }
-
-  folderSelect(folder) {
-    return <></>
-  }
-
 
   render() {
-    const { notes, folders, folderId, noteId } = this.state
+    const { notes, folders } = this.state
 
     return (
       <div className="App">
@@ -35,46 +25,42 @@ export default class App extends Component {
           <Header />
         </header>
         <main className='mainContainer'>
-          <SideBar folders={folders}>
+          <Switch>
             <Route
+              exact
               path='/'
-              component={FolderList}
+              render={() => {
+                return (
+                  <>
+                    <SideBar folders={folders} />
+                    <Main {...this.state} />
+                  </>
+                )
+              }}
             />
             <Route
               path='/folder/:folderId'
               render={() => {
-                return <FolderList />
+                return (
+                  <>
+                    <SideBar folders={folders} />
+                    <Main {...this.state} />
+                  </>
+                )
               }}
             />
             <Route
               path='/note/:noteId'
               render={() => {
-                return <SideBarActiveNote />
+                return (
+                  <>
+                    <SideBarActiveNote />
+                    <Note {...this.state} />
+                  </>
+                )
               }}
             />
-          </SideBar>
-
-          <Route
-            exact
-            path='/'
-            render={(props) => {
-              debugger
-              return <Main {...this.state} />
-            }}
-          />
-          <Route
-            path='/folder/:folderId'
-            render={(props) => {
-              debugger;
-              return <Main {...this.state} />
-            }}
-          />
-          <Route
-            path='/note/:noteId'
-            render={() => {
-              return <Note />
-            }}
-          />
+          </Switch>
         </main>
       </div>
     )

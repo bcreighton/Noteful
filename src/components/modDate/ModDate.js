@@ -55,6 +55,7 @@ export default class ModDate extends Component {
   }
 
   render() {
+    debugger
     return (
       <p className='modDate'>Date modified on {this.convertDate(this.props.date)}</p>
     )

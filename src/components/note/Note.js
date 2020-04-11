@@ -6,6 +6,7 @@ import './Note.css'
 
 export default class Note extends Component {
   render() {
+    debugger
     return (
       <>
         <div className='noteHeader'>
