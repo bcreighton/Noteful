@@ -1,21 +1,28 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import ModDate from '../modDate/ModDate'
 import Delete from '../buttons/delete/Delete'
 import NoteContent from '../noteContent/NoteContent'
 import './Note.css'
 
-export default class Note extends Component {
+class Note extends Component {
+  getNote() {
+    return this.props.notes.find(note => note.id === this.props.match.params.noteId)
+  }
+
   render() {
-    debugger
+    const selectedNote = this.getNote()
     return (
       <>
         <div className='noteHeader'>
           <h2 className='noteTitle'>Note Name</h2>
-          <ModDate />
+          <ModDate date={selectedNote.modified} />
           <Delete />
         </div>
-        <NoteContent />
+        <NoteContent content={selectedNote.content} />
       </>
     )
   }
 }
+
+export default withRouter(Note)
