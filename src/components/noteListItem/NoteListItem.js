@@ -5,7 +5,7 @@ import './NoteListItem.css'
 
 export default class NoteListItem extends Component {
   render() {
-    const { id, folderId, title, modDate } = this.props
+    const { id, title, modDate } = this.props
     return (
       <a href={`/note/${id}`}>
         <div className='noteHeader'>

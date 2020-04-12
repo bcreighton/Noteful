@@ -1,0 +1,17 @@
+.noteHeader {
+  width: 90%;
+}
+
+.noteContent {
+  grid-column: 2 / 3;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px 0;
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+.noteContent p {
+  margin-bottom: 1.2rem;
+}
+

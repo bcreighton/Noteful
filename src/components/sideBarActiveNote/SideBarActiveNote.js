@@ -9,10 +9,10 @@ export default class SideBarActiveNote extends Component {
 
   render() {
     return (
-      <>
+      <aside className='sideBar'>
         <GoBack />
         {this.getFolderName()}
-      </>
+      </aside>
     )
   }
 }

@@ -4,7 +4,7 @@ import './GoBack.css'
 export default class GoBack extends Component {
   render() {
     return (
-      <button className='btn'>Go Back</button>
+      <button className='btn goBack'>Go Back</button>
     )
   }
 }
