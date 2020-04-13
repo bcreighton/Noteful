@@ -5,7 +5,6 @@ import Main from './components/main/Main'
 import SideBar from './components/sideBar/SideBar'
 import SideBarActiveNote from './components/sideBarActiveNote/SideBarActiveNote'
 import Note from './components/note/Note'
-import NotFound from './components/NotFound'
 import './App.css';
 import NOTES from './dummyData'
 
