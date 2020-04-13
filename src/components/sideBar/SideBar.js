@@ -8,7 +8,6 @@ export default class SideBar extends Component {
   render() {
     return (
       <aside className='sideBar'>
-        <GoBack />
         <FolderList
           folders={this.props.folders}
         />

@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom'
 import Header from './components/header/Header'
 import Main from './components/main/Main'
 import SideBar from './components/sideBar/SideBar'
-import FolderList from './components/folderList/FolderList'
 import SideBarActiveNote from './components/sideBarActiveNote/SideBarActiveNote'
 import Note from './components/note/Note'
 import NotFound from './components/NotFound'
@@ -24,44 +23,45 @@ export default class App extends Component {
         <header className="header">
           <Header />
         </header>
-        <main className='mainContainer'>
-          <Switch>
-            <Route
-              exact
-              path='/'
-              render={() => {
-                return (
-                  <>
-                    <SideBar folders={folders} />
-                    <Main {...this.state} />
-                  </>
-                )
-              }}
-            />
-            <Route
-              path='/folder/:folderId'
-              render={() => {
-                return (
-                  <>
-                    <SideBar folders={folders} />
-                    <Main {...this.state} />
-                  </>
-                )
-              }}
-            />
-            <Route
-              path='/note/:noteId'
-              render={() => {
-                return (
-                  <>
-                    <SideBarActiveNote />
-                    <Note {...this.state} />
-                  </>
-                )
-              }}
-            />
-          </Switch>
-        </main>
+        <Switch>
+          <Route
+            exact
+            path='/'
+            render={() => {
+              return (
+                <main className='mainContainer'>
+                  <SideBar folders={folders} />
+                  <Main {...this.state} />
+                </main>
+              )
+            }}
+          />
+          <Route
+            path='/folder/:folderId'
+            render={() => {
+              return (
+                <main className='mainContainer'>
+                  <SideBar folders={folders} />
+                  <Main {...this.state} />
+                </main>
+              )
+            }}
+          />
+          <Route
+            path='/note/:noteId'
+            render={({ history }) => {
+              return (
+                <main className='mainContainer activeNote'>
+                  <SideBarActiveNote
+                    {...this.state}
+                    goBackClick={() => { history.goBack() }}
+                  />
+                  <Note {...this.state} />
+                </main>
+              )
+            }}
+          />
+        </Switch>
       </div>
     )
   }

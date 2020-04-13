@@ -5,3 +5,7 @@
   border-right: 2px solid black;
 }
 
+.sideBar.activeNote {
+  grid-row: 1 / 3;
+}
+

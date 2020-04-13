@@ -1,0 +1,9 @@
+#addNote {
+  float: left;
+  width: 30%;
+  margin-left: 35px;
+}
+
+#addNote:hover {
+  background-color: green;
+}

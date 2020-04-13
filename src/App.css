@@ -22,6 +22,10 @@
   margin: 0 auto;
 }
 
+.mainContainer.activeNote {
+  grid-template-rows: 1fr 2fr;
+}
+
 a, a:hover, a:visited, a:active {
   width: 100%;
   text-decoration: none;
