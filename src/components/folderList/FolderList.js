@@ -19,7 +19,6 @@ class FolderList extends Component {
               key={folder.id}
               id={folder.id}
               name={folder.name}
-              className={'folder'}
             />
           ))
         }
