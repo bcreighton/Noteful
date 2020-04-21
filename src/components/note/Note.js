@@ -24,7 +24,7 @@ class Note extends Component {
         <div className='noteHeader'>
           <h2 className='noteTitle'>{selectedNote.name}</h2>
           <ModDate date={selectedNote.modified} />
-          <Delete />
+          <Delete id={selectedNote.id} />
         </div>
         <NoteContent content={selectedNote.content} />
       </>
