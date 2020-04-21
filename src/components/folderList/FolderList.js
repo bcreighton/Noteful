@@ -13,7 +13,7 @@ class FolderList extends Component {
       <>
         {
           // Refactored code using context
-          // this.props.folders.map(folder =>
+          // this.context.folders.map(folder =>
           this.props.folders.map(folder => (
             <Folder
               key={folder.id}
