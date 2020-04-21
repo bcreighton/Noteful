@@ -1,44 +1,26 @@
 import React, { Component } from 'react'
+import NotefulContext from '../../NotefulContext'
 import { withRouter } from 'react-router-dom'
 import Folder from '../folder/Folder'
 import './FolderList.css'
 
 class FolderList extends Component {
-  // state = {
-  //   folderId: null
-  // }
-
-  // componentDidMount() {
-  //   this.setState({
-  //     folderId: this.props.match.params.folderId
-  //   })
-  // }
+  static contextType = NotefulContext;
 
   render() {
 
     return (
       <>
         {
+          // Refactored code using context
+          // this.props.folders.map(folder =>
           this.props.folders.map(folder => (
-            // folder.id === this.state.folderId
             <Folder
               key={folder.id}
               id={folder.id}
               name={folder.name}
               className={'folder'}
             />
-            // ? <Folder
-            //   key={folder.id}
-            //   id={folder.id}
-            //   name={folder.name}
-            //   className={'folder activeFolder'}
-            // />
-            // : <Folder
-            //   key={folder.id}
-            //   id={folder.id}
-            //   name={folder.name}
-            //   className={'folder'}
-            // />
           ))
         }
       </>
