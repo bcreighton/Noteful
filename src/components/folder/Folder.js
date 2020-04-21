@@ -13,7 +13,7 @@ export default class Folder extends Component {
       >
         <div
           id={id}
-          className={this.props.className}
+          className='folder'
         >
           <h2 className='folderName'>{name}</h2>
         </div>
