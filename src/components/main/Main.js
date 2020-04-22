@@ -8,32 +8,17 @@ class Main extends Component {
   static contextType = NotefulContext;
 
   getNotesById() {
-    // Refactored code using context
-
-    /* 
-    return this.props.notes.filter(note => note.folderId === this.props.match.params.folderId);
-    */
     return this.props.notes.filter(note => note.folderId === this.props.match.params.folderId);
   }
 
   render() {
     return (
       // Refactored code using context
-      /* <NotefulContext.Consumer>
-        {(context) => {
+      /*
           <section className='mainSection'>
-            {
-              this.context.match.params.folderId
-                ? <NoteList
-                  notes={this.getNotesById()}
-                />
-                : <NoteList
-                  notes={this.context.notes}
-                />
-            }
+            <NoteList />
           </section>
-        }}
-      </NotefulContext.Consumer> */
+     */
       <section className='mainSection'>
         {
           this.props.match.params.folderId
