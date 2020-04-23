@@ -1,19 +1,13 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import NotefulContext from '../../NotefulContext'
 import ModDate from '../modDate/ModDate'
 import Delete from '../buttons/delete/Delete'
 import NoteContent from '../noteContent/NoteContent'
 import './Note.css'
 
 class Note extends Component {
-  static contextType = NotefulContext;
 
   getNote() {
-    // New refactored code using context
-    /* 
-    return this.context.notes.find(note => note.id === this.context.match.params.noteId)
-    */
     return this.props.notes.find(note => note.id === this.props.match.params.noteId)
   }
 
