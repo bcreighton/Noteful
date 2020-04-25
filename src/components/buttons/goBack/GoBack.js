@@ -8,7 +8,6 @@ class GoBack extends Component {
   static contextType = NotefulContext;
 
   goBackClick = () => {
-    debugger
     this.props.history.goBack()
   }
 

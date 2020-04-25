@@ -25,11 +25,12 @@ export default class NoteList extends Component {
   }
 
   render() {
+    debugger
 
     const noteListItems =
-      this.context.match === undefined
+      this.props.match === undefined
         ? this.context.notes
-        : this.context.match.params.folderId !== undefined
+        : this.props.match.params.folderId !== undefined
           ? this.getNotesById()
           : this.context.notes
 

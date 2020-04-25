@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import NotefulContext from '../../NotefulContext'
-import { withRouter } from 'react-router-dom'
 import Folder from '../folder/Folder'
 import './FolderList.css'
 
@@ -23,4 +22,4 @@ class FolderList extends Component {
   }
 }
 
-export default withRouter(FolderList)
+export default FolderList
