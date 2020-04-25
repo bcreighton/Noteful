@@ -15,6 +15,7 @@ export default class App extends Component {
   }
 
   render() {
+    debugger
     const { notes, folders } = this.state
     const { main, sideBar } = this.props
     /* 
