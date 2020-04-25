@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import NotefulContext from '../../../NotefulContext'
 import '../Button.css'
 import './GoBack.css'
 
 class GoBack extends Component {
-  static contextType = NotefulContext;
 
   goBackClick = () => {
     this.props.history.goBack()
