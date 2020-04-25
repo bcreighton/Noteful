@@ -12,7 +12,6 @@ export default class NoteList extends Component {
   }
 
   generateNotesList(notes) {
-    debugger
     return notes.map(note => (
       <NoteListItem
         key={note.id}
@@ -34,7 +33,6 @@ export default class NoteList extends Component {
           ? this.getNotesById()
           : this.context.notes
 
-    debugger
     return (
       <>
         {this.generateNotesList(noteListItems)}

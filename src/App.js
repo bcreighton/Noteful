@@ -11,11 +11,11 @@ import NotefulContext from './NotefulContext';
 
 export default class App extends Component {
   state = {
-    notes: [],
-    folders: [],
+    notes: NOTES.notes,
+    folders: NOTES.folders,
   }
 
-  setFolders = folders => {
+  /* setFolders = folders => {
     this.setState({
       folders,
       error: null,
@@ -56,7 +56,7 @@ export default class App extends Component {
   componentDidMount() {
     this.getFolders()
     this.getNotes()
-  }
+  } */
 
   renderSideBarRoutes() {
     return (
@@ -101,8 +101,8 @@ export default class App extends Component {
     const { notes, folders } = this.state
 
     const contextValue = {
-      notes,
-      folders,
+      notes: this.state.notes,
+      folders: this.state.folders,
       // deleteNote: this.deleteNote,
     }
 
