@@ -16,12 +16,25 @@ export default class App extends Component {
 
   render() {
     const { notes, folders } = this.state
+    const { main, sideBar } = this.props
+    /* 
+    const className =
+      this.props.main === Notes
+        ? 'mainContainer activeNote'
+        : 'mainContainer' 
+    */
 
     return (
       <div className="App">
         <header className="header">
           <Header />
         </header>
+        {/* 
+          <main className={className}>
+            {main}
+            {sideBar}
+          </main>
+        */}
         <Switch>
           <Route
             exact
