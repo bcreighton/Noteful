@@ -10,8 +10,64 @@ import NOTES from './dummyData'
 
 export default class App extends Component {
   state = {
-    notes: NOTES.notes,
-    folders: NOTES.folders,
+    notes: [],
+    folders: [],
+  }
+
+  setFolders = folders => {
+    this.setState({
+      folders,
+      error: null,
+    })
+  }
+
+  setNotes = notes => {
+    this.setState({
+      notes,
+      error: null,
+    })
+  }
+
+  getFolders() {
+    fetch('http://localhost:9090/folders')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(res.status)
+        }
+        res.json()
+      })
+      .then(this.setFolders)
+      .catch(error => this.setState({ error }))
+  }
+
+  getNotes() {
+    fetch('http://localhost:9090/notes')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(res.status)
+        }
+        res.json()
+      })
+      .then(this.setNotes)
+      .catch(error => this.setState({ error }))
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:9090/folders', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json'
+      },
+    }
+    )
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(res.status)
+        }
+        return res.json()
+      })
+      .then(this.setFolders)
+      .catch(error => this.setState({ error }))
   }
 
   render() {
