@@ -12,16 +12,13 @@ import Note from './components/note/Note'
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
-      {/* 
-        <App>
-          <Switch>
-            <Route exact path='/' components={{main: Main, sideBar: SideBar}}
-            <Route path='folder/:folderId' components={{main: Main, sideBar: SideBar}}
-            <Route path='note/noteId' components={{main: Note, sideBar: SideBarActiveNote}}
-          </Switch>
-        </App>
-      */}
-      <App />
+      <App>
+        <Switch>
+          <Route exact path='/' components={{ main: Main, sideBar: SideBar }} />
+          <Route path='folder/:folderId' components={{ main: Main, sideBar: SideBar }} />
+          <Route path='note/noteId' components={{ main: Note, sideBar: SideBarActiveNote }} />
+        </Switch>
+      </App>
     </React.StrictMode>
   </BrowserRouter>,
   document.getElementById('root')
