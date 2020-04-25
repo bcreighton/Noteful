@@ -5,7 +5,7 @@ import NoteList from '../noteList/NoteList'
 import './Main.css'
 
 class Main extends Component {
-  static contextType = NotefulContext;
+  // static contextType = NotefulContext;
 
   getNotesById() {
     return this.props.notes.filter(note => note.folderId === this.props.match.params.folderId);

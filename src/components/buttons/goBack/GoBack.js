@@ -13,6 +13,7 @@ export default class GoBack extends Component {
   */
 
   render() {
+    debugger
     return (
       <button
         id='goBack'

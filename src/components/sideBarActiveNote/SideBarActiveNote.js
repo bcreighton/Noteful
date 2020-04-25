@@ -5,7 +5,7 @@ import GoBack from '../buttons/goBack/GoBack'
 import './SideBarActiveNote.css'
 
 class SideBarActiveNote extends Component {
-  static contextType = NotefulContext;
+  // static contextType = NotefulContext;
 
   getFolder() {
     /* 
