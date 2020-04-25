@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, useLocation } from 'react-router-dom'
 import Header from './components/header/Header'
 import Main from './components/main/Main'
 import SideBar from './components/sideBar/SideBar'
@@ -34,7 +34,7 @@ export default class App extends Component {
         if (!res.ok) {
           throw new Error(res.status)
         }
-        res.json()
+        return res.json()
       })
       .then(this.setFolders)
       .catch(error => this.setState({ error }))
@@ -46,34 +46,59 @@ export default class App extends Component {
         if (!res.ok) {
           throw new Error(res.status)
         }
-        res.json()
+        return res.json()
       })
       .then(this.setNotes)
       .catch(error => this.setState({ error }))
   }
 
   componentDidMount() {
-    fetch('http://localhost:9090/folders', {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json'
-      },
-    }
+    this.getFolders()
+    this.getNotes()
+  }
+
+  renderSideBarRoutes() {
+    return (
+      <>
+        {['/', '/folder/:folderId'].map(path => (
+          <Route
+            exact
+            key={path}
+            path={path}
+            component={SideBar}
+          />
+        )
+        )}
+        <Route
+          path='/note/:noteId'
+          component={SideBarActiveNote}
+        />
+      </>
     )
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(res.status)
-        }
-        return res.json()
-      })
-      .then(this.setFolders)
-      .catch(error => this.setState({ error }))
+  }
+
+  renderMainRoutes() {
+    return (
+      <>
+        {['/', '/folder/:folderId'].map(path => (
+          <Route
+            exact
+            key={path}
+            path={path}
+            component={Main}
+          />
+        ))}
+        <Route
+          path='/note/noteId'
+          component={Note}
+        />
+      </>
+    )
   }
 
   render() {
     debugger
     const { notes, folders } = this.state
-    const { main, sideBar } = this.props
     /* 
     const className =
       this.props.main === Notes
