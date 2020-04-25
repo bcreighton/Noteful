@@ -12,6 +12,7 @@ export default class NoteList extends Component {
   }
 
   generateNotesList(notes) {
+    debugger
     return notes.map(note => (
       <NoteListItem
         key={note.id}
@@ -25,10 +26,15 @@ export default class NoteList extends Component {
   }
 
   render() {
-    const noteListItems = this.context.match.params.folderId
-      ? this.getNotesById()
-      : this.context.notes
 
+    const noteListItems =
+      this.context.match === undefined
+        ? this.context.notes
+        : this.context.match.params.folderId !== undefined
+          ? this.getNotesById()
+          : this.context.notes
+
+    debugger
     return (
       <>
         {this.generateNotesList(noteListItems)}

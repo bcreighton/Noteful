@@ -7,6 +7,7 @@ import SideBarActiveNote from './components/sideBarActiveNote/SideBarActiveNote'
 import Note from './components/note/Note'
 import './App.css';
 import NOTES from './dummyData'
+import NotefulContext from './NotefulContext';
 
 export default class App extends Component {
   state = {
@@ -97,8 +98,14 @@ export default class App extends Component {
   }
 
   render() {
-
     const { notes, folders } = this.state
+
+    const contextValue = {
+      notes,
+      folders,
+      // deleteNote: this.deleteNote,
+    }
+
     const className =
       this.props.match === undefined
         ? 'mainContainer'
@@ -106,18 +113,19 @@ export default class App extends Component {
           ? 'mainContainer activeNote'
           : 'mainContainer'
 
-    debugger
     return (
-      <div className="App">
-        <header className="header">
-          <Header />
-        </header>
+      <NotefulContext.Provider value={contextValue}>
+        <div className="App">
+          <header className="header">
+            <Header />
+          </header>
 
-        <main className={className}>
-          {this.renderMainRoutes()}
-          {this.renderSideBarRoutes()}
-        </main>
-      </div>
+          <main className={className}>
+            {this.renderMainRoutes()}
+            {this.renderSideBarRoutes()}
+          </main>
+        </div>
+      </NotefulContext.Provider>
     )
   }
 }
