@@ -8,7 +8,11 @@ export default class NoteList extends Component {
   static contextType = NotefulContext;
 
   getNotesById() {
-    return this.context.notes.filter(note => note.folderId === this.props.match.params.folderId);
+    return this.context.notes.filter(note => {
+      return (
+        note.folderId === this.props.match.params.folderId
+      )
+    });
   }
 
   generateNotesList(notes) {
@@ -25,14 +29,12 @@ export default class NoteList extends Component {
   }
 
   render() {
-
     const noteListItems =
       this.props.match === undefined
         ? this.context.notes
         : this.props.match.params.folderId !== undefined
           ? this.getNotesById()
           : this.context.notes
-
     return (
       <>
         {this.generateNotesList(noteListItems)}

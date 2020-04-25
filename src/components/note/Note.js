@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
 import NotefulContext from '../../NotefulContext'
 import ModDate from '../modDate/ModDate'
 import Delete from '../buttons/delete/Delete'
@@ -28,4 +27,4 @@ class Note extends Component {
   }
 }
 
-export default withRouter(Note)
+export default Note

@@ -80,20 +80,21 @@ export default class App extends Component {
 
   renderMainRoutes() {
     return (
-      <>
-        {['/', '/folder/:folderId'].map(path => (
-          <Route
-            exact
-            key={path}
-            path={path}
-            component={Main}
-          />
-        ))}
+      <Switch>
+        <Route
+          exact
+          path='/'
+          component={Main}
+        />
+        <Route
+          path='/folder/:folderId'
+          component={Main}
+        />
         <Route
           path='/note/:noteId'
           component={Note}
         />
-      </>
+      </Switch>
     )
   }
 
@@ -101,8 +102,8 @@ export default class App extends Component {
     const { notes, folders } = this.state
 
     const contextValue = {
-      notes: this.state.notes,
-      folders: this.state.folders,
+      notes,
+      folders,
       // deleteNote: this.deleteNote,
     }
 

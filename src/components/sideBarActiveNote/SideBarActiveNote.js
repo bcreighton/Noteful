@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import NotefulContext from '../../NotefulContext'
-import { withRouter } from 'react-router-dom'
 import GoBack from '../buttons/goBack/GoBack'
 import './SideBarActiveNote.css'
 
@@ -24,4 +23,4 @@ class SideBarActiveNote extends Component {
   }
 }
 
-export default withRouter(SideBarActiveNote)
+export default SideBarActiveNote
