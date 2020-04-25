@@ -5,31 +5,12 @@ import NoteList from '../noteList/NoteList'
 import './Main.css'
 
 class Main extends Component {
-  // static contextType = NotefulContext;
-
-  // Remove the below with refactor
-  getNotesById() {
-    return this.props.notes.filter(note => note.folderId === this.props.match.params.folderId);
-  }
+  static contextType = NotefulContext;
 
   render() {
     return (
-      // Refactored code using context
-      /*
-          <section className='mainSection'>
-            <NoteList />
-          </section>
-     */
       <section className='mainSection'>
-        {
-          this.props.match.params.folderId
-            ? <NoteList
-              notes={this.getNotesById()}
-            />
-            : <NoteList
-              notes={this.props.notes}
-            />
-        }
+        <NoteList />
       </section>
     )
   }
