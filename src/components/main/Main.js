@@ -7,6 +7,7 @@ import './Main.css'
 class Main extends Component {
   // static contextType = NotefulContext;
 
+  // Remove the below with refactor
   getNotesById() {
     return this.props.notes.filter(note => note.folderId === this.props.match.params.folderId);
   }
