@@ -90,7 +90,7 @@ export default class App extends Component {
           />
         ))}
         <Route
-          path='/note/noteId'
+          path='/note/:noteId'
           component={Note}
         />
       </>

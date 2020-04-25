@@ -7,14 +7,10 @@ import NoteContent from '../noteContent/NoteContent'
 import './Note.css'
 
 class Note extends Component {
-  // static contextType = NotefulContext;
+  static contextType = NotefulContext;
 
   getNote() {
-    // New refactored code using context
-    /* 
-    return this.context.notes.find(note => note.id === this.context.match.params.noteId)
-    */
-    return this.props.notes.find(note => note.id === this.props.match.params.noteId)
+    return this.context.notes.find(note => note.id === this.props.match.params.noteId)
   }
 
   render() {
