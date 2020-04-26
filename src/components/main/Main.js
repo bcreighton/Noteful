@@ -9,7 +9,7 @@ class Main extends Component {
   render() {
     return (
       <section className='mainSection'>
-        <NoteList />
+        <NoteList folderId={this.props.match.params.folderId} />
       </section>
     )
   }

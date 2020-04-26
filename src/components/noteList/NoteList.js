@@ -10,7 +10,7 @@ export default class NoteList extends Component {
   getNotesById() {
     return this.context.notes.filter(note => {
       return (
-        note.folderId === this.props.match.params.folderId
+        note.folderId === this.props.folderId
       )
     });
   }
@@ -30,11 +30,10 @@ export default class NoteList extends Component {
 
   render() {
     const noteListItems =
-      this.props.match === undefined
+      this.props.folderId === undefined
         ? this.context.notes
-        : this.props.match.params.folderId !== undefined
-          ? this.getNotesById()
-          : this.context.notes
+        : this.getNotesById()
+
     return (
       <>
         {this.generateNotesList(noteListItems)}

@@ -80,21 +80,21 @@ export default class App extends Component {
 
   renderMainRoutes() {
     return (
-      <Switch>
-        <Route
-          exact
-          path='/'
-          component={Main}
-        />
-        <Route
-          path='/folder/:folderId'
-          component={Main}
-        />
+      <>
+        {['/', '/folder/:folderId'].map(path => (
+          <Route
+            exact
+            key={path}
+            path={path}
+            component={Main}
+          />
+        )
+        )}
         <Route
           path='/note/:noteId'
           component={Note}
         />
-      </Switch>
+      </>
     )
   }
 
