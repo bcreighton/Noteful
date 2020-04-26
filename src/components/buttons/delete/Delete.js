@@ -6,28 +6,28 @@ import './Delete.css'
 class Delete extends Component {
   static contextType = NotefulContext;
 
+  deleteNoteRequest() {
+    console.log('clicked')
+  }
+
   render() {
     return (
-      // New refactored code using context
-      /* 
       <NotefulContext.Consumer>
         {(context) => (
-          <button 
+          <button
             id='delete'
             className='btn deleteBTN'
-            onClick={() => {
-              deleteNoteRequest(
+            onClick={(props) => {
+              this.deleteNoteRequest(
                 props.id,
                 context.deleteNote,
               )
             }}
           >
-          Delete
-          </button> 
+            Delete
+          </button>
         )}
       </NotefulContext.Consumer>
-      */
-      <button id='delete' className='btn deleteBTN'>Delete</button>
     )
   }
 }
