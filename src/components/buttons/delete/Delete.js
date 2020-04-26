@@ -6,8 +6,28 @@ import './Delete.css'
 class Delete extends Component {
   static contextType = NotefulContext;
 
-  deleteNoteRequest() {
-    console.log('clicked')
+  deleteNoteRequest(noteId, cb) {
+    fetch(`http://localhost:9090/notes + /${noteId}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json'
+      },
+    })
+      .then(res => {
+        if (!res.ok) {
+          // handle error
+          throw new Error(res.status)
+        }
+        return res.json()
+      })
+      .then(notes => {
+        cb(notes)
+      })
+      .catch(error => {
+        this.setState({
+          error,
+        })
+      })
   }
 
   render() {
@@ -17,9 +37,9 @@ class Delete extends Component {
           <button
             id='delete'
             className='btn deleteBTN'
-            onClick={(props) => {
+            onClick={() => {
               this.deleteNoteRequest(
-                props.id,
+                this.props.id,
                 context.deleteNote,
               )
             }}
