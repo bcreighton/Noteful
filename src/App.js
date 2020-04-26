@@ -58,6 +58,16 @@ export default class App extends Component {
     this.getNotes()
   } */
 
+  deleteNote = noteId => {
+    // Remove note with the noteId from state
+    const newNotes = this.state.notes.filter(
+      note => note.id !== noteId
+    )
+    this.setState({
+      notes: newNotes,
+    })
+  }
+
   renderSideBarRoutes() {
     return (
       <>
@@ -104,7 +114,7 @@ export default class App extends Component {
     const contextValue = {
       notes,
       folders,
-      // deleteNote: this.deleteNote,
+      deleteNote: this.deleteNote,
     }
 
     const className =
