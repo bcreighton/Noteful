@@ -7,7 +7,8 @@ class Delete extends Component {
   static contextType = NotefulContext;
 
   deleteNoteRequest(noteId, cb) {
-    fetch(`http://localhost:9090/notes + /${noteId}`, {
+
+    fetch(`http://localhost:9090/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -20,8 +21,8 @@ class Delete extends Component {
         }
         return res.json()
       })
-      .then(notes => {
-        cb(notes)
+      .then(data => {
+        cb(noteId)
       })
       .catch(error => {
         this.setState({
