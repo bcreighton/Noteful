@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import NotefulContext from '../../../NotefulContext'
 import '../Button.css'
 import './Delete.css'
 

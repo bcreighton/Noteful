@@ -4,6 +4,7 @@ import Folder from '../folder/Folder'
 import './FolderList.css'
 
 class FolderList extends Component {
+  static contextType = NotefulContext;
 
   render() {
 

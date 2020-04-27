@@ -6,6 +6,7 @@ import NoteContent from '../noteContent/NoteContent'
 import './Note.css'
 
 class Note extends Component {
+  static contextType = NotefulContext;
 
   getNote() {
     return this.context.notes.find(note => note.id === this.props.match.params.noteId)
