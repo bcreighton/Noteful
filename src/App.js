@@ -59,12 +59,12 @@ export default class App extends Component {
     this.getNotes()
   }
 
-  deleteNote = noteId => {
-    debugger
+  deleteNote = (noteId, notePage) => {
     // Remove note with the noteId from state
     const newNotes = this.state.notes.filter(
       note => note.id !== noteId
     )
+    notePage !== undefined && notePage.push('/')
     this.setState({
       notes: newNotes,
     })

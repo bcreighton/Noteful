@@ -6,8 +6,7 @@ import './Delete.css'
 class Delete extends Component {
   static contextType = NotefulContext;
 
-  deleteNoteRequest(noteId, cb) {
-
+  deleteNoteRequest(noteId, cb, notePage) {
     fetch(`http://localhost:9090/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
@@ -22,7 +21,7 @@ class Delete extends Component {
         return res.json()
       })
       .then(data => {
-        cb(noteId)
+        cb(noteId, notePage)
       })
       .catch(error => {
         this.setState({
@@ -42,6 +41,7 @@ class Delete extends Component {
               this.deleteNoteRequest(
                 this.props.id,
                 context.deleteNote,
+                this.props.history,
               )
             }}
           >
