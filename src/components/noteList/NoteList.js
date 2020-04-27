@@ -4,10 +4,18 @@ import AddNote from '../buttons/addNote/AddNote'
 import './NoteList.css'
 
 export default class NoteList extends Component {
+  static contextType = NotefulContext;
 
-  render() {
+  getNotesById() {
+    return this.context.notes.filter(note => {
+      return (
+        note.folderId === this.props.folderId
+      )
+    });
+  }
 
-    const noteListItems = this.props.notes.map(note => (
+  generateNotesList(notes) {
+    return notes.map(note => (
       <NoteListItem
         key={note.id}
         id={note.id}
@@ -17,10 +25,17 @@ export default class NoteList extends Component {
         content={note.content}
       />
     ))
+  }
+
+  render() {
+    const noteListItems =
+      this.props.folderId === undefined
+        ? this.context.notes
+        : this.getNotesById()
 
     return (
       <>
-        {noteListItems}
+        {this.generateNotesList(noteListItems)}
         <AddNote />
       </>
     )

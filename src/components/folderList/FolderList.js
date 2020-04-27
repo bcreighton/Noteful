@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import NotefulContext from '../../NotefulContext'
 import Folder from '../folder/Folder'
 import './FolderList.css'
 
@@ -9,18 +9,16 @@ class FolderList extends Component {
 
     return (
       <>
-        {
-          this.props.folders.map(folder => (
-            <Folder
-              key={folder.id}
-              id={folder.id}
-              name={folder.name}
-            />
-          ))
-        }
+        {this.context.folders.map(folder => (
+          <Folder
+            key={folder.id}
+            id={folder.id}
+            name={folder.name}
+          />
+        ))}
       </>
     )
   }
 }
 
-export default withRouter(FolderList)
+export default FolderList
