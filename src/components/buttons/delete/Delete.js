@@ -5,7 +5,7 @@ import './Delete.css'
 
 class Delete extends Component {
 
-  deleteNoteRequest(noteId, cb, notePage) {
+  deleteNoteRequest(noteId, cb, history) {
     fetch(`http://localhost:9090/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
@@ -20,7 +20,7 @@ class Delete extends Component {
         return res.json()
       })
       .then(data => {
-        cb(noteId, notePage)
+        cb(noteId, history)
       })
       .catch(error => {
         this.setState({
