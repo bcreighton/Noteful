@@ -8,15 +8,15 @@ export default class NoteListItem extends Component {
   render() {
     const { id, title, modDate } = this.props
     return (
-      <>
-        <Link to={`/note/${id}`} id={id} className='noteItem'>
-          <div className='noteHeader'>
+      <div className='noteItem'>
+        <Link to={`/note/${id}`} id={id} >
+          <div className='note'>
             <h2 className='noteTitle'>{title}</h2>
             <ModDate date={modDate} />
           </div>
         </Link>
         <Delete id={id} />
-      </>
+      </div>
     )
   }
 }
