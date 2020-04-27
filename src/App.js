@@ -64,7 +64,7 @@ export default class App extends Component {
     const newNotes = this.state.notes.filter(
       note => note.id !== noteId
     )
-    notePage !== undefined && history.push('/')
+    history !== undefined && history.push('/')
     this.setState({
       notes: newNotes,
     })
