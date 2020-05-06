@@ -8,8 +8,10 @@ class SideBarActiveNote extends Component {
 
   getFolder() {
     const selectedNote = this.context.notes.find(note => note.id === this.props.match.params.noteId)
-
-    return this.context.folders.find(folder => folder.id === selectedNote.folderId)
+    if (!selectedNote) {
+      return {};
+    }
+    return this.context.folders.find(folder => folder.id === selectedNote.folderId);
   }
 
   render() {

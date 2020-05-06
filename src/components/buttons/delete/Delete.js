@@ -4,9 +4,12 @@ import '../Button.css'
 import './Delete.css'
 
 class Delete extends Component {
+  static contextType = NotefulContext;
 
-  deleteNoteRequest(noteId, cb, history) {
-    fetch(`http://localhost:9090/notes/${noteId}`, {
+  deleteNoteRequest() {
+    const { id, history } = this.props;
+
+    fetch(`http://localhost:9090/notes/${id}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -20,7 +23,8 @@ class Delete extends Component {
         return res.json()
       })
       .then(data => {
-        cb(noteId, history)
+        this.context.deleteNote(id, history)
+        history.push('/')
       })
       .catch(error => {
         this.setState({
@@ -30,24 +34,17 @@ class Delete extends Component {
   }
 
   render() {
+
     return (
-      <NotefulContext.Consumer>
-        {(context) => (
-          <button
-            id='delete'
-            className='btn deleteBTN'
-            onClick={() => {
-              this.deleteNoteRequest(
-                this.props.id,
-                context.deleteNote,
-                this.props.history,
-              )
-            }}
-          >
-            Delete
-          </button>
-        )}
-      </NotefulContext.Consumer>
+      <button
+        id='delete'
+        className='btn deleteBTN'
+        onClick={() => {
+          this.deleteNoteRequest()
+        }}
+      >
+        Delete
+      </button>
     )
   }
 }
