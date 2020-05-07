@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import FolderList from '../folderList/FolderList'
-import AddFolder from '../buttons/addFolder/AddFolder'
+import AddFolder from '../buttons/addFolderBTN/AddFolderBTN'
 import './SideBar.css'
 
 export default class SideBar extends Component {
