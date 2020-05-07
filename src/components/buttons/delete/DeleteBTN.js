@@ -3,7 +3,7 @@ import NotefulContext from '../../../NotefulContext'
 import '../Button.css'
 import './DeleteBTN.css'
 
-class Delete extends Component {
+class DeleteBTN extends Component {
   static contextType = NotefulContext;
 
   deleteNoteRequest() {
@@ -49,4 +49,4 @@ class Delete extends Component {
   }
 }
 
-export default Delete
+export default DeleteBTN
