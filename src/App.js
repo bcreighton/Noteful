@@ -101,86 +101,82 @@ export default class App extends Component {
     }
     return id;
   }
-}
 
-renderSideBarRoutes() {
-  return (
-    <>
-      {['/', '/folder/:folderId'].map(path => (
+  renderSideBarRoutes() {
+    return (
+      <>
+        {['/', '/folder/:folderId'].map(path => (
+          <Route
+            exact
+            key={path}
+            path={path}
+            component={SideBar}
+          />
+        )
+        )}
         <Route
-          exact
-          key={path}
-          path={path}
+          path='/note/:noteId'
+          component={SideBarActiveNote}
+        />
+
+        <Route
+          path='/addFolder'
           component={SideBar}
         />
-      )
-      )}
-      <Route
-        path='/note/:noteId'
-        component={SideBarActiveNote}
-      />
-      <Route
-        path='/addFolder'
-        component={SideBar}
-      />
-    </>
-  )
-}
-
-renderMainRoutes() {
-  return (
-    <>
-      {['/', '/folder/:folderId'].map(path => (
-        <Route
-          exact
-          key={path}
-          path={path}
-          component={Main}
-        />
-      )
-      )}
-      <Route
-        path='/note/:noteId'
-        component={Note}
-      />
-
-      <Route
-        path='/addFolder'
-        component={AddFolder}
-      />
-    </>
-  )
-}
-
-render() {
-  const { notes, folders } = this.state
-
-  const contextValue = {
-    notes,
-    folders,
-    deleteNote: this.deleteNote,
+      </>
+    )
   }
 
-  const className =
-    this.props.match === undefined
-      ? 'mainContainer'
-      : this.props.match.path === '/note/:noteId'
-        ? 'mainContainer activeNote'
-        : 'mainContainer'
+  renderMainRoutes() {
+    return (
+      <>
+        {['/', '/folder/:folderId'].map(path => (
+          <Route
+            exact
+            key={path}
+            path={path}
+            component={Main}
+          />
+        )
+        )}
+        <Route
+          path='/note/:noteId'
+          component={Note}
+        />
 
-  return (
-    <NotefulContext.Provider value={contextValue}>
-      <div className="App">
-        <header className="header">
-          <Header />
-        </header>
+        <Route
+          path='/addFolder'
+          component={AddFolder}
+        />
 
-        <main className={className}>
-          {this.renderMainRoutes()}
-          {this.renderSideBarRoutes()}
-        </main>
-      </div>
-    </NotefulContext.Provider>
-  )
-}
+      </>
+    )
+  }
+
+  render() {
+    const { notes, folders } = this.state
+
+    const contextValue = {
+      notes,
+      folders,
+      deleteNote: this.deleteNote,
+      generateId: this.generateId,
+      addFolder: this.addFolder,
+    }
+
+    return (
+      <NotefulContext.Provider value={contextValue}>
+        <div className="App">
+          <header className="header">
+            <Header />
+          </header>
+
+          <main className={className}>
+            {this.renderMainRoutes()}
+            {this.renderSideBarRoutes()}
+          </main>
+        </div>
+      </NotefulContext.Provider>
+    )
+  }
 }
