@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NotefulContext from '../../NotefulContext'
 import NoteListItem from '../noteListItem/NoteListItem'
-import AddNote from '../buttons/addNote/AddNote'
+import AddNote from '../buttons/addNoteBTN/AddNoteBTN'
 import './NoteList.css'
 
 export default class NoteList extends Component {

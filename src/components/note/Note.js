@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NotefulContext from '../../NotefulContext'
 import ModDate from '../modDate/ModDate'
-import Delete from '../buttons/delete/Delete'
+import Delete from '../buttons/delete/DeleteBTN'
 import NoteContent from '../noteContent/NoteContent'
 import './Note.css'
 

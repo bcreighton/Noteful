@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NotefulContext from '../../../NotefulContext'
 import '../Button.css'
-import './Delete.css'
+import './DeleteBTN.css'
 
 class Delete extends Component {
   static contextType = NotefulContext;

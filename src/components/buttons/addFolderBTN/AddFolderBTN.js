@@ -6,7 +6,7 @@ import './AddFolderBTN.css'
 export default class AddFolder extends Component {
   render() {
     return (
-      <Link to={'/addFolder'} id='addFolder' className='btn addBTN'>Add Folder</Link>
+      <Link to={'/addFolder'} id='addFolderBTN' className='btn addBTN'>Add Folder</Link>
     )
   }
 }

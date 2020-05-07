@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ValidationError from '../ValidationError'
 import NotefulContext from '../../NotefulContext'
 
 const Required = () => (
@@ -10,6 +11,28 @@ class AddFolder extends Component {
 
   state = {
     error: null,
+    folderName: {
+      value: '',
+      touched: false,
+    },
+  }
+
+  updateFolderName(name) {
+    this.setState({
+      folderName: {
+        value: name,
+        touched: true,
+      }
+    })
+  }
+
+  validateFolderName() {
+    const folderName = this.state.folderName.value.trim();
+    if (folderName.length === 0) {
+      return "Folder name is required";
+    } else if (folderName.length < 3) {
+      return "Folder name must be at least 3 characters long";
+    }
   }
 
   handleSubmit = (e) => {
@@ -48,6 +71,7 @@ class AddFolder extends Component {
   }
 
   render() {
+    const folderNameError = this.validateFolderName();
     const { error } = this.state;
 
     return (
@@ -69,8 +93,12 @@ class AddFolder extends Component {
             name='folderName'
             id='folderName'
             placeholder='New Folder'
+            onChange={e => this.updateFolderName(e.target.value)}
             required
           />
+          {this.state.folderName.touched && (
+            <ValidationError message={folderNameError} />
+          )}
         </div>
         <div className='AddFolderButtons'>
           <button type='button' onClick={this.handleClickCancel}>

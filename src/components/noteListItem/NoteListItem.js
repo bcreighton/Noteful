@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import ModDate from '../modDate/ModDate'
-import Delete from '../buttons/delete/Delete'
+import Delete from '../buttons/delete/DeleteBTN'
 import './NoteListItem.css'
 
 export default class NoteListItem extends Component {

@@ -1,9 +1,9 @@
-#addNote {
+#addNoteBTN {
   float: left;
   width: 30%;
   margin-left: 35px;
 }
 
-#addNote:hover {
+#addNoteBTN:hover {
   background-color: green;
 }
