@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import NotefulContext from '../../NotefulContext'
 
-const Required = () => {
+const Required = () => (
   <span className='AddFolderRequired'>*</span>
-}
+)
 
 class AddFolder extends Component {
   static contextType = NotefulContext;
@@ -15,6 +15,7 @@ class AddFolder extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
+    const { folderName } = e.target
     const folder = {
       id: this.context.generateId(),
       name: folderName.value,
@@ -22,6 +23,7 @@ class AddFolder extends Component {
 
     fetch('http://localhost:9090/folders', {
       method: 'POST',
+      body: JSON.stringify(folder),
       headers: {
         'content-type': 'application/json',
       }
@@ -33,11 +35,10 @@ class AddFolder extends Component {
         return res.json()
       })
       .then(data => {
-        id = ''
-        name.value = ''
+        folderName.value = ''
 
         this.context.addFolder(data)
-        this.props.history('/')
+        this.props.history.push('/')
       })
       .catch(error => this.setState({ error }))
   }
@@ -47,6 +48,8 @@ class AddFolder extends Component {
   }
 
   render() {
+    const { error } = this.state;
+
     return (
       <form
         className='AddFolderForm'

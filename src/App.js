@@ -61,6 +61,7 @@ export default class App extends Component {
   }
 
   addFolder = folder => {
+    debugger
     this.setState({
       folders: [...this.state.folders, folder]
     })
@@ -163,6 +164,13 @@ export default class App extends Component {
       generateId: this.generateId,
       addFolder: this.addFolder,
     }
+
+    const className =
+      this.props.match === undefined
+        ? 'mainContainer'
+        : this.props.match.path === '/note/:noteId'
+          ? 'mainContainer activeNote'
+          : 'mainContainer'
 
     return (
       <NotefulContext.Provider value={contextValue}>
