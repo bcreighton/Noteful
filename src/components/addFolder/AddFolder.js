@@ -9,6 +9,20 @@ class AddFolder extends Component {
     error: null,
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+
+    fetch('http://localhost:9090/folders')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(res.status)
+        }
+        return res.json()
+      })
+      .then(this.setFolders)
+      .catch(error => this.setState({ error }))
+  }
+
   handleClickCancel = () => {
     this.props.history.push('/')
   }
@@ -23,15 +37,15 @@ class AddFolder extends Component {
           {error && <p>{error.message}</p>}
         </div>
         <div>
-          <label htmlFor='title'>
-            Title
+          <label htmlFor='folderName'>
+            Folder Name
               {' '}
             <Required />
           </label>
           <input
             type='text'
-            name='title'
-            id='title'
+            name='folderName'
+            id='folderName'
             placeholder='New Folder'
             required
           />
