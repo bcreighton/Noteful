@@ -6,6 +6,7 @@ import SideBar from './components/sideBar/SideBar'
 import SideBarActiveNote from './components/sideBarActiveNote/SideBarActiveNote'
 import Note from './components/note/Note'
 import AddFolder from './components/addFolder/AddFolder'
+import AddNote from './components/addNote/AddNote'
 import './App.css';
 import NOTES from './dummyData'
 import NotefulContext from './NotefulContext';
@@ -106,7 +107,7 @@ export default class App extends Component {
   renderSideBarRoutes() {
     return (
       <>
-        {['/', '/folder/:folderId'].map(path => (
+        {['/', '/folder/:folderId', '/addFolder', '/addNote'].map(path => (
           <Route
             exact
             key={path}
@@ -118,11 +119,6 @@ export default class App extends Component {
         <Route
           path='/note/:noteId'
           component={SideBarActiveNote}
-        />
-
-        <Route
-          path='/addFolder'
-          component={SideBar}
         />
       </>
     )
@@ -148,6 +144,11 @@ export default class App extends Component {
         <Route
           path='/addFolder'
           component={AddFolder}
+        />
+
+        <Route
+          path='/addNote'
+          component={AddNote}
         />
 
       </>
