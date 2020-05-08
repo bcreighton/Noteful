@@ -61,7 +61,6 @@ export default class App extends Component {
   }
 
   addFolder = folder => {
-    debugger
     this.setState({
       folders: [...this.state.folders, folder]
     })
