@@ -64,7 +64,6 @@ class AddNote extends Component {
   }
 
   getFolderId = (noteFolder) => {
-    debugger
     return this.context.folders.find(folder => {
       return noteFolder === folder.name && folder.id
     })
@@ -89,7 +88,6 @@ class AddNote extends Component {
       modified: this.getCurrentDateTime(),
       name: noteTitle.value,
     }
-    debugger
 
     fetch('http://localhost:9090/notes', {
       method: 'POST',
