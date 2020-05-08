@@ -61,9 +61,14 @@ export default class App extends Component {
   }
 
   addFolder = folder => {
-    debugger
     this.setState({
       folders: [...this.state.folders, folder]
+    })
+  }
+
+  addNote = note => {
+    this.setState({
+      notes: [...this.state.notes, note]
     })
   }
 
@@ -163,6 +168,7 @@ export default class App extends Component {
       deleteNote: this.deleteNote,
       generateId: this.generateId,
       addFolder: this.addFolder,
+      addNote: this.addNote,
     }
 
     const className =
