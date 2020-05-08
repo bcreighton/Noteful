@@ -34,7 +34,7 @@ class AddNote extends Component {
     })
   }
 
-  updateNoteTitle(folder) {
+  updateNoteFolder(folder) {
     this.setState({
       noteFolder: {
         value: folder,
@@ -43,7 +43,7 @@ class AddNote extends Component {
     })
   }
 
-  updateNoteTitle(content) {
+  updateNoteContent(content) {
     this.setState({
       noteContent: {
         value: content,
@@ -52,9 +52,21 @@ class AddNote extends Component {
     })
   }
 
+  generateFolderDDList = () => {
+    return this.context.folders.map(folder => (
+      <option
+        key={folder.id}
+        value={folder.name}
+      >
+        {folder.name}
+      </option>
+    ))
+  }
+
   render() {
     const noteTitleError = '';
     const { error } = this.state;
+    const folderList = this.generateFolderDDList();
 
     return (
       <form
@@ -83,6 +95,24 @@ class AddNote extends Component {
           )} */}
         </div>
         <div>
+          <label htmlFor='noteFolder'>
+            Note Folder
+              {' '}
+            <Required />
+          </label>
+          <select
+            id='noteFolder'
+            name='noteFolder'
+            onChange={e => this.updateNoteFolder(e.target.value)}
+            required
+          >
+            {folderList}
+          </select>
+          {/* {this.state.noteFolder.touched && (
+            <ValidationError message={noteFolderError} />
+          )} */}
+        </div>
+        <div>
           <label htmlFor='noteContent'>
             Content
               {' '}
@@ -98,24 +128,6 @@ class AddNote extends Component {
           />
           {/* {this.state.noteContent.touched && (
             <ValidationError message={noteContentError} />
-          )} */}
-        </div>
-        <div>
-          <label htmlFor='noteFolder'>
-            Note Folder
-              {' '}
-            <Required />
-          </label>
-          <input
-            type='text'
-            name='noteFolder'
-            id='noteFolder'
-            placeholder='New Note'
-            onChange={e => this.updateFolderName(e.target.value)}
-            required
-          />
-          {/* {this.state.noteFolder.touched && (
-            <ValidationError message={noteFolderError} />
           )} */}
         </div>
         <div className='AddNoteButtons'>
