@@ -84,7 +84,7 @@ class AddFolder extends Component {
         </div>
         <div>
           <label htmlFor='folderName'>
-            Folder Name
+            Name
               {' '}
             <Required />
           </label>

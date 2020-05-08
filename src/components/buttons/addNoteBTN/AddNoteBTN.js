@@ -1,11 +1,20 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import '../Button.css'
 import './AddNoteBTN.css'
 
-export default class AddNote extends Component {
+class AddNoteBTN extends Component {
   render() {
     return (
-      <button id='addNoteBTN' className='btn addBTN'>Add Note</button>
+      <Link
+        to={'/addNote'}
+        id='addNoteBTN'
+        className='btn addBTN'
+      >
+        Add Note
+      </Link>
     )
   }
 }
+
+export default AddNoteBTN

@@ -6,8 +6,8 @@ import SideBar from './components/sideBar/SideBar'
 import SideBarActiveNote from './components/sideBarActiveNote/SideBarActiveNote'
 import Note from './components/note/Note'
 import AddFolder from './components/addFolder/AddFolder'
+import AddNote from './components/addNote/AddNote'
 import './App.css';
-import NOTES from './dummyData'
 import NotefulContext from './NotefulContext';
 
 export default class App extends Component {
@@ -66,12 +66,18 @@ export default class App extends Component {
     })
   }
 
+  addNote = note => {
+    this.setState({
+      notes: [...this.state.notes, note]
+    })
+  }
+
   deleteNote = (noteId, history) => {
     // Remove note with the noteId from state
     const newNotes = this.state.notes.filter(
       note => note.id !== noteId
     )
-    // history !== undefined && history.push('/')
+    history !== undefined && history.push('/')
     this.setState({
       notes: newNotes,
     })
@@ -105,7 +111,7 @@ export default class App extends Component {
   renderSideBarRoutes() {
     return (
       <>
-        {['/', '/folder/:folderId'].map(path => (
+        {['/', '/folder/:folderId', '/addFolder', '/addNote'].map(path => (
           <Route
             exact
             key={path}
@@ -117,11 +123,6 @@ export default class App extends Component {
         <Route
           path='/note/:noteId'
           component={SideBarActiveNote}
-        />
-
-        <Route
-          path='/addFolder'
-          component={SideBar}
         />
       </>
     )
@@ -149,6 +150,11 @@ export default class App extends Component {
           component={AddFolder}
         />
 
+        <Route
+          path='/addNote'
+          component={AddNote}
+        />
+
       </>
     )
   }
@@ -162,6 +168,7 @@ export default class App extends Component {
       deleteNote: this.deleteNote,
       generateId: this.generateId,
       addFolder: this.addFolder,
+      addNote: this.addNote,
     }
 
     const className =

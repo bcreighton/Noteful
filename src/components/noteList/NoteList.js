@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NotefulContext from '../../NotefulContext'
 import NoteListItem from '../noteListItem/NoteListItem'
-import AddNote from '../buttons/addNoteBTN/AddNoteBTN'
+import AddNoteBTN from '../buttons/addNoteBTN/AddNoteBTN'
 import './NoteList.css'
 
 export default class NoteList extends Component {
@@ -37,7 +37,7 @@ export default class NoteList extends Component {
     return (
       <>
         {this.generateNotesList(noteListItems)}
-        <AddNote />
+        <AddNoteBTN />
       </>
     )
   }
