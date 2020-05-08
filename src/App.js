@@ -8,7 +8,6 @@ import Note from './components/note/Note'
 import AddFolder from './components/addFolder/AddFolder'
 import AddNote from './components/addNote/AddNote'
 import './App.css';
-import NOTES from './dummyData'
 import NotefulContext from './NotefulContext';
 
 export default class App extends Component {
@@ -73,7 +72,7 @@ export default class App extends Component {
     const newNotes = this.state.notes.filter(
       note => note.id !== noteId
     )
-    // history !== undefined && history.push('/')
+    history !== undefined && history.push('/')
     this.setState({
       notes: newNotes,
     })

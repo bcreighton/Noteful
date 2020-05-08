@@ -11,7 +11,7 @@ class AddNote extends Component {
 
   state = {
     error: null,
-    noteName: {
+    noteTitle: {
       value: '',
       touched: false,
     },
@@ -23,11 +23,37 @@ class AddNote extends Component {
       value: '',
       touched: false,
     },
+  }
 
+  updateNoteTitle(title) {
+    this.setState({
+      noteTitle: {
+        value: title,
+        touched: true,
+      }
+    })
+  }
+
+  updateNoteTitle(folder) {
+    this.setState({
+      noteFolder: {
+        value: folder,
+        touched: true,
+      }
+    })
+  }
+
+  updateNoteTitle(content) {
+    this.setState({
+      noteContent: {
+        value: content,
+        touched: true,
+      }
+    })
   }
 
   render() {
-    const noteNameError = '';
+    const noteTitleError = '';
     const { error } = this.state;
 
     return (
@@ -37,42 +63,6 @@ class AddNote extends Component {
       >
         <div className='AddNoteError' role='alert'>
           {error && <p>{error.message}</p>}
-        </div>
-        <div>
-          <label htmlFor='noteName'>
-            Note Name
-              {' '}
-            <Required />
-          </label>
-          <input
-            type='text'
-            name='noteName'
-            id='noteName'
-            placeholder='New Note'
-            onChange={e => this.updateNoteName(e.target.value)}
-            required
-          />
-          {this.state.NoteName.touched && (
-            <ValidationError message={noteNameError} />
-          )}
-        </div>
-        <div>
-          <label htmlFor='noteContent'>
-            Content
-              {' '}
-            <Required />
-          </label>
-          <input
-            type='text'
-            name='noteContent'
-            id='noteContent'
-            placeholder="What is your note's content?"
-            onChange={e => this.updateNoteName(e.target.value)}
-            required
-          />
-          {this.state.NoteName.touched && (
-            <ValidationError message={noteNameError} />
-          )}
         </div>
         <div>
           <label htmlFor='noteTitle'>
@@ -85,12 +75,48 @@ class AddNote extends Component {
             name='noteTitle'
             id='noteTitle'
             placeholder='New Note'
-            onChange={e => this.updateNoteName(e.target.value)}
+            onChange={e => this.updateNoteTitle(e.target.value)}
             required
           />
-          {this.state.NoteName.touched && (
-            <ValidationError message={noteNameError} />
-          )}
+          {/* {this.state.noteTitle.touched && (
+            <ValidationError message={noteTitleError} />
+          )} */}
+        </div>
+        <div>
+          <label htmlFor='noteContent'>
+            Content
+              {' '}
+            <Required />
+          </label>
+          <input
+            type='text'
+            name='noteContent'
+            id='noteContent'
+            placeholder="What is your note's content?"
+            onChange={e => this.updateNoteContent(e.target.value)}
+            required
+          />
+          {/* {this.state.noteContent.touched && (
+            <ValidationError message={noteContentError} />
+          )} */}
+        </div>
+        <div>
+          <label htmlFor='noteFolder'>
+            Note Folder
+              {' '}
+            <Required />
+          </label>
+          <input
+            type='text'
+            name='noteFolder'
+            id='noteFolder'
+            placeholder='New Note'
+            onChange={e => this.updateFolderName(e.target.value)}
+            required
+          />
+          {/* {this.state.noteFolder.touched && (
+            <ValidationError message={noteFolderError} />
+          )} */}
         </div>
         <div className='AddNoteButtons'>
           <button type='button' onClick={this.handleClickCancel}>
