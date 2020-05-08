@@ -52,6 +52,31 @@ class AddNote extends Component {
     })
   }
 
+  validateNoteTitle() {
+    const noteTitle = this.state.noteTitle.value.trim();
+    if (noteTitle.length === 0) {
+      return "Note title is required";
+    } else if (noteTitle.length < 3) {
+      return "Note title must be at least 3 characters long";
+    }
+  }
+
+  validateNoteFolder() {
+    const noteFolder = this.state.noteFolder.value.trim();
+    if (noteFolder.length === 0) {
+      return "Please select a folder; it is required";
+    }
+  }
+
+  validateNoteContent() {
+    const noteContent = this.state.noteContent.value.trim();
+    if (noteContent.length === 0) {
+      return "Content is required";
+    } else if (noteContent.length < 5) {
+      return "Please enter at least 5 characters";
+    }
+  }
+
   generateFolderDDList = () => {
     return this.context.folders.map(folder => (
       <option
@@ -117,7 +142,9 @@ class AddNote extends Component {
   }
 
   render() {
-    const noteTitleError = '';
+    const noteTitleError = this.validateNoteTitle();
+    const noteFolderError = this.validateNoteFolder();
+    const noteContentError = this.validateNoteContent();
     const { error } = this.state;
     const folderList = this.generateFolderDDList();
 
@@ -143,9 +170,9 @@ class AddNote extends Component {
             onChange={e => this.updateNoteTitle(e.target.value)}
             required
           />
-          {/* {this.state.noteTitle.touched && (
+          {this.state.noteTitle.touched && (
             <ValidationError message={noteTitleError} />
-          )} */}
+          )}
         </div>
         <div>
           <label htmlFor='noteFolder'>
@@ -161,9 +188,9 @@ class AddNote extends Component {
           >
             {folderList}
           </select>
-          {/* {this.state.noteFolder.touched && (
+          {this.state.noteFolder.touched && (
             <ValidationError message={noteFolderError} />
-          )} */}
+          )}
         </div>
         <div>
           <label htmlFor='noteContent'>
@@ -171,17 +198,16 @@ class AddNote extends Component {
               {' '}
             <Required />
           </label>
-          <input
-            type='text'
+          <textarea
             name='noteContent'
             id='noteContent'
-            placeholder="What is your note's content?"
+            placeholder="Enter your note content here..."
             onChange={e => this.updateNoteContent(e.target.value)}
             required
-          />
-          {/* {this.state.noteContent.touched && (
+          ></textarea>
+          {this.state.noteContent.touched && (
             <ValidationError message={noteContentError} />
-          )} */}
+          )}
         </div>
         <div className='AddNoteButtons'>
           <button type='button' onClick={this.handleClickCancel}>

@@ -36,8 +36,8 @@ export default class NoteList extends Component {
 
     return (
       <>
-        {this.generateNotesList(noteListItems)}
         <AddNoteBTN />
+        {this.generateNotesList(noteListItems)}
       </>
     )
   }
