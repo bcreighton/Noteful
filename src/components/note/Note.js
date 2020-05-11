@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import NotefulContext from '../../NotefulContext'
 import ModDate from '../modDate/ModDate'
 import DeleteBTN from '../buttons/delete/DeleteBTN'
@@ -30,4 +31,8 @@ class Note extends Component {
   }
 }
 
-export default Note
+export default Note;
+
+Note.propTypes = {
+
+}
