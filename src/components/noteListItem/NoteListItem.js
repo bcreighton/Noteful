@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import ModDate from '../modDate/ModDate'
 import DeleteBTN from '../buttons/delete/DeleteBTN'
 import './NoteListItem.css'
+import NoteList from '../noteList/NoteList'
 
-export default class NoteListItem extends Component {
+class NoteListItem extends Component {
   render() {
     const { id, title, modDate } = this.props
     return (
@@ -19,4 +21,12 @@ export default class NoteListItem extends Component {
       </div>
     )
   }
+}
+
+export default NoteListItem;
+
+NoteListItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  modDate: PropTypes.string.isRequired,
 }
