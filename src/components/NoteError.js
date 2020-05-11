@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import GoBack from '../components/buttons/goBack'
+import GoBack from '../components/buttons/goBack/GoBack'
 
 class NoteError extends Component {
   static getDerivedStateFromError(error) {
