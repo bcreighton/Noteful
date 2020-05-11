@@ -3,6 +3,7 @@ import NotefulContext from '../../NotefulContext'
 import ModDate from '../modDate/ModDate'
 import DeleteBTN from '../buttons/delete/DeleteBTN'
 import NoteContent from '../noteContent/NoteContent'
+import NoteError from '../NoteError'
 import './Note.css'
 
 class Note extends Component {
@@ -16,12 +17,14 @@ class Note extends Component {
     const selectedNote = this.getNote()
     return (
       <>
-        <div className='noteHeader'>
-          <h2 className='noteTitle'>{selectedNote.name}</h2>
-          <ModDate date={selectedNote.modified} />
-          <DeleteBTN id={selectedNote.id} history={this.props.history} />
-        </div>
-        <NoteContent content={selectedNote.content} />
+        <NoteError>
+          <div className='noteHeader'>
+            <h2 className='noteTitle'>{selectedNote.name}</h2>
+            <ModDate date={selectedNote.modified} />
+            <DeleteBTN id={selectedNote.id} history={this.props.history} />
+          </div>
+          <NoteContent content={selectedNote.content} />
+        </NoteError>
       </>
     )
   }
