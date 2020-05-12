@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import ValidationError from '../ValidationError'
 import NotefulContext from '../../NotefulContext'
 
@@ -224,3 +225,7 @@ class AddNote extends Component {
 }
 
 export default AddNote;
+
+AddNote.propTypes = {
+  history: PropTypes.object.isRequired,
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import NotefulContext from '../../NotefulContext'
+import NoteListError from '../NoteListError'
 import NoteList from '../noteList/NoteList'
 import './Main.css'
 
@@ -8,7 +8,9 @@ class Main extends Component {
   render() {
     return (
       <section className='mainSection'>
-        <NoteList folderId={this.props.match.params.folderId} />
+        <NoteListError>
+          <NoteList folderId={this.props.match.params.folderId} />
+        </NoteListError>
       </section>
     )
   }

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import ModDate from '../modDate/ModDate'
 import DeleteBTN from '../buttons/delete/DeleteBTN'
 import './NoteListItem.css'
-import NoteList from '../noteList/NoteList'
 
 class NoteListItem extends Component {
   render() {
@@ -27,6 +26,8 @@ export default NoteListItem;
 
 NoteListItem.propTypes = {
   id: PropTypes.string.isRequired,
+  folderId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   modDate: PropTypes.string.isRequired,
+  content: PropTypes.string,
 }

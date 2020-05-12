@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Header from './components/header/Header'
 import Main from './components/main/Main'
 import SideBar from './components/sideBar/SideBar'
@@ -9,6 +9,7 @@ import AddFolder from './components/addFolder/AddFolder'
 import AddNote from './components/addNote/AddNote'
 import './App.css';
 import NotefulContext from './NotefulContext';
+import NoteError from './components/NoteError';
 
 export default class App extends Component {
   state = {
@@ -142,7 +143,11 @@ export default class App extends Component {
         )}
         <Route
           path='/note/:noteId'
-          component={Note}
+          render={(props) => (
+            <NoteError>
+              <Note {...props} />
+            </NoteError>
+          )}
         />
 
         <Route

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import '../Button.css'
 import './GoBack.css'
@@ -20,4 +21,8 @@ class GoBack extends Component {
   }
 }
 
-export default withRouter(GoBack)
+export default withRouter(GoBack);
+
+GoBack.propTypes = {
+  history: PropTypes.object.isRequired,
+}

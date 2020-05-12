@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import NotefulContext from '../../../NotefulContext'
 import '../Button.css'
 import './DeleteBTN.css'
@@ -50,3 +51,8 @@ class DeleteBTN extends Component {
 }
 
 export default DeleteBTN
+
+DeleteBTN.propTypes = {
+  id: PropTypes.string,
+  history: PropTypes.object,
+}

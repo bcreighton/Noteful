@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import './ModDate.css'
 
 export default class ModDate extends Component {
@@ -62,4 +63,8 @@ export default class ModDate extends Component {
       <p className='modDate'>Date modified on {this.convertDate(this.props.date)}</p>
     )
   }
+}
+
+ModDate.propTypes = {
+  date: PropTypes.string,
 }
